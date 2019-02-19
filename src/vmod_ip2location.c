@@ -2,10 +2,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-#include "vrt.h"
 #include "cache/cache.h"
-#include "vcc_if.h"
-#include "config.h"
 
 #include <IP2Location.h>
 #include <string.h>
