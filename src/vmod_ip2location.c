@@ -108,7 +108,7 @@ lookup_field(const struct vrt_ctx *ctx, struct vmod_priv *priv, const char *ip, 
 		}
 	}
 	if (p == NULL)
-		p = WS_Copy(ctx->ws, "-", -1);
+		p = WS_Copy(ctx->ws, "", -1);
 	return (p);
 }
 
