@@ -29,13 +29,13 @@ void
 freeit(struct vmod_priv *priv)
 {
 	IP2Location_close(priv->priv);
-	IP2Location_delete_shm(priv->priv);
+	IP2Location_delete_shm();
 }
 
 VCL_VOID
 vmod_init_db(const struct vrt_ctx *ctx, struct vmod_priv *priv, const char *filename)
 {
-	IP2Location *IP2LocationObj = IP2Location_open(filename);
+	IP2Location *IP2LocationObj = IP2Location_open((char *) filename);
 	IP2Location_open_mem(priv->priv, IP2LOCATION_SHARED_MEMORY);
 	priv->priv = IP2LocationObj;
 	AN(priv->priv);
@@ -47,7 +47,7 @@ lookup_field(const struct vrt_ctx *ctx, struct vmod_priv *priv, const char *ip, 
 {
 	char *p = NULL;
 	if (priv->priv != NULL) {
-		IP2LocationRecord *record = IP2Location_get_all(priv->priv, ip);
+		IP2LocationRecord *record = IP2Location_get_all(priv->priv, (char *) ip);
 		if (record != NULL) {
 			switch( field ){
 				case TZ:
